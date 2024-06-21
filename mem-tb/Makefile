@@ -10,7 +10,8 @@ ifdef VERILATOR_ROOT
 VERILATOR := $(VERILATOR_ROOT)/bin/verilator
 endif
 
-UVM_ROOT ?=../../verilator-verification-features-tests/uvm
+# VERILATOR_UVM Path to repository uvm-verilator/verilator-verification-features-tests/uvm
+UVM_ROOT ?=${VERILATOR_UVM}
 UVM_TEST ?= mem_wr_rd_test
 
 RTL_PATH ?= ./rtl
