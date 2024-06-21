@@ -34,7 +34,7 @@ class ct_param_in_monitor #(int DATA_WIDTH = 8) extends uvm_monitor;
       item = ct_param_in_seq_item #(DATA_WIDTH)::type_id::create("item", this);
       do_monitor(item);
 
-      `uvm_info(this.get_full_name, item.convert2string(), UVM_HIGH)
+      `uvm_info(this.get_full_name(), item.convert2string(), UVM_HIGH)
       aport.write(item);
     end
   endtask : run_phase

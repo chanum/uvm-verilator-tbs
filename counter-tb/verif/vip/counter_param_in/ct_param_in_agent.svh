@@ -21,7 +21,7 @@ class ct_param_in_agent #(int DATA_WIDTH = 8) extends uvm_agent;
 
     if (m_config == null) begin
       if (!uvm_config_db#(ct_param_in_agent_config#(DATA_WIDTH))::get(this, "", "m_config", m_config)) begin
-        `uvm_fatal(this.get_full_name, "No ct_param_in_agent config specified!")
+        `uvm_fatal(this.get_full_name(), "No ct_param_in_agent config specified!")
       end
     end
 

@@ -31,7 +31,7 @@ class ct_param_in_driver #(int DATA_WIDTH = 8)
       ct_param_in_seq_item #(DATA_WIDTH) item;
 
       seq_item_port.get_next_item(item);
-      `uvm_info(this.get_full_name, item.convert2string(), UVM_HIGH);
+      `uvm_info(this.get_full_name(), item.convert2string(), UVM_HIGH);
 
       do_drive(item);
 
