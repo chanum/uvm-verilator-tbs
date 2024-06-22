@@ -18,7 +18,7 @@ RTL_PATH ?= ./rtl
 VIP_PATH ?= ./verif/vip
 TB_PATH ?= ./verif/tb
 
-VERILOG_DEFINE_FILES = ${UVM_ROOT}/src/uvm.sv ${VIP_PATH}/counter_param_in/ct_param_in_if.sv ${VIP_PATH}/counter_param_in/ct_param_in_agent_pkg.sv ${TB_PATH}/defn_pkg.sv ${TB_PATH}/tb_top.sv ${RTL_PATH}/counter.sv
+VERILOG_DEFINE_FILES = ${UVM_ROOT}/src/uvm.sv ${VIP_PATH}/counter_param_in/ct_param_in_if.sv ${VIP_PATH}/counter_param_in/ct_param_in_agent_pkg.sv ${TB_PATH}/ct_defn_pkg.sv ${TB_PATH}/tb_top.sv ${RTL_PATH}/counter.sv
 VERILOG_INCLUDE_DIRS = ${VIP_PATH}/counter_param_in ${TB_PATH} ${RTL_PATH} ${UVM_ROOT}/src
 
 # -------------------------------------

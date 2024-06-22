@@ -1,5 +1,5 @@
 
-package defn_pkg;
+package ct_defn_pkg;
 
   // TB Top definitions.
   localparam int RESET_CLOCK_COUNT = 10;
@@ -9,4 +9,4 @@ package defn_pkg;
 
   localparam int Q_DATA_WIDTH = 8;
 
-endpackage : defn_pkg
+endpackage : ct_defn_pkg
