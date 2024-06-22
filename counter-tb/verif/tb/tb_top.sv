@@ -2,7 +2,7 @@
 module tb_top;
   import uvm_pkg::*;
   import ct_defn_pkg::*;
-  // import ct_test_pkg::*;
+  import ct_test_pkg::*;
 
   `include "uvm_macros.svh"
 
