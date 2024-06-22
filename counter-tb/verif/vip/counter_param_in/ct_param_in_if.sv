@@ -9,8 +9,8 @@ interface ct_param_in_if #(
     input logic clk
   );
 
-  logic                      ld = 0;
-  logic [DATA_WIDTH - 1 : 0] data = 0;
+  logic                      ld;
+  logic [DATA_WIDTH - 1 : 0] data;
 
   task wait_reset();
     @(posedge rst_n);

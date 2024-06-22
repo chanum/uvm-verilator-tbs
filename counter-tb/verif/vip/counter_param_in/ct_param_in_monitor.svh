@@ -6,7 +6,8 @@ class ct_param_in_monitor #(int DATA_WIDTH = 8) extends uvm_monitor;
   `uvm_component_utils(ct_param_in_monitor #(DATA_WIDTH));
 
   ct_param_in_agent_config #(DATA_WIDTH)  m_cfg;
-  virtual ct_param_in_if #(DATA_WIDTH)    m_vif;
+  // virtual ct_param_in_if #(DATA_WIDTH)    m_vif;
+  virtual ct_param_in_if  m_vif;
 
   uvm_analysis_port #(ct_param_in_seq_item #(DATA_WIDTH)) aport;
 

@@ -7,7 +7,8 @@ class ct_param_in_driver #(int DATA_WIDTH = 8)
   `uvm_component_utils(ct_param_in_driver #(DATA_WIDTH));
 
   ct_param_in_agent_config #(DATA_WIDTH)  m_cfg;
-  virtual ct_param_in_if #(DATA_WIDTH)    m_vif;
+  // virtual ct_param_in_if #(DATA_WIDTH)    m_vif;
+  virtual ct_param_in_if     m_vif;
 
   function new(string name = "ct_param_in_driver", uvm_component parent = null);
     super.new(name, parent);

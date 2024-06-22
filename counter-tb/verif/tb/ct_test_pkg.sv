@@ -109,7 +109,7 @@ package ct_test_pkg;
       // uvm_test_done.raise_objection(this);
       phase.raise_objection(this);
 
-      ct_vseq.n = SIM_PKT_NUM;
+      // ct_vseq.n = SIM_PKT_NUM;
       ct_vseq.start(null);
       #100ns;
 
