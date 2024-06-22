@@ -61,7 +61,7 @@ module tb_top;
   );
 
   initial begin
-    uvm_config_db#(virtual ct_param_in_if)::set(uvm_root::get(),"*","m_counter_in_vif", counter_in_if);
+    uvm_config_db#(virtual ct_param_in_if)::set(uvm_root::get(),"*","ct_param_in_vif", counter_in_if);
     // uvm_config_db #(virtual ct_param_in_if#(Q_DATA_WIDTH))::set(null, "uvm_test_top","m_counter_in_vif", counter_in_if);
   end
 
@@ -78,7 +78,7 @@ module tb_top;
 
     // Execute test
     run_test(); 
-
+    
     // Stop simulation.
     // $stop();
   end
