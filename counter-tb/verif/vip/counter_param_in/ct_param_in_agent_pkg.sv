@@ -11,5 +11,6 @@ package ct_param_in_agent_pkg;
   `include "ct_param_in_agent.svh"
 
   // Utility sequences
-  `include "ct_param_in_seq.svh"
+  // `include "ct_param_in_seq.svh"
+
 endpackage

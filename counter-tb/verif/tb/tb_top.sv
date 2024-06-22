@@ -61,8 +61,13 @@ module tb_top;
   );
 
   initial begin
+    uvm_config_db#(virtual ct_param_in_if)::set(uvm_root::get(),"*","m_counter_in_vif", counter_in_if);
+    // uvm_config_db #(virtual ct_param_in_if#(Q_DATA_WIDTH))::set(null, "uvm_test_top","m_counter_in_vif", counter_in_if);
+  end
+
+  initial begin
     // Set time format for simulation.
-    $timeformat(-12, 1, " ps", 1);
+    // $timeformat(-12, 1, " ps", 1);
 
     // Set default verbosity level for all TB components.
     //uvm_top.set_report_verbosity_level(UVM_HIGH);
@@ -71,19 +76,11 @@ module tb_top;
     //uvm_top.enable_print_topology = 1;
     //uvm_top.finish_on_completion  = 0;
 
-    // Here two ways to register the interfaces in the  UVM configuration database:
-
-    // 1. Classic way: I need to pass TOP-DOWN the parameter
-    uvm_config_db #(virtual ct_param_in_if#(Q_DATA_WIDTH))::set(null, "uvm_test_top","m_counter_in_vif", counter_in_if);
-    // 2. Using abstract class ans instance override
-    // Better for parametrized interfaces <-- recomended way
-    //counter_out.register_interface("ct_out_if");
-
     // Execute test
-    //run_test();
+    run_test(); 
 
     // Stop simulation.
-    $stop();
+    // $stop();
   end
 
 endmodule : tb_top
