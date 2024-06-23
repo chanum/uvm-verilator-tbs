@@ -29,7 +29,7 @@ module tb_top;
   //---------------------------------------
   // interface instance
   //---------------------------------------
-  mem_if intf(clk,reset);
+  mem_if intf(clk, reset);
 
   //---------------------------------------
   // DUT instance

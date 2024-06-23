@@ -4,10 +4,11 @@ class mem_model_base_test extends uvm_test;
 
   `uvm_component_utils(mem_model_base_test)
 
-  //---------------------------------------
-  // env instance
-  //---------------------------------------
-  mem_model_env env;
+  // Environment class instantiation.
+  mem_env env;
+
+  // Environment configuration object instantiation.
+  mem_env_config env_config;
 
   //---------------------------------------
   // constructor
@@ -22,8 +23,17 @@ class mem_model_base_test extends uvm_test;
   virtual function void build_phase(uvm_phase phase);
     super.build_phase(phase);
 
-    // Create the env
-    env = mem_model_env::type_id::create("env", this);
+    // Create environment and its configuration object.
+    env = mem_env::type_id::create("env", this);
+    env_config = mem_env_config::type_id::create("env_config", this);
+
+    // Configure Agent.
+    env_config.mem_agent_cnfg = mem_agent_config::type_id::create("mem_agent_cnfg");
+    env_config.mem_agent_cnfg.active = UVM_ACTIVE;
+
+    // Post configure and set configuration object to database
+    uvm_config_db#(mem_env_config)::set(uvm_root::get(), "*", "mem_env_config", env_config);
+
   endfunction : build_phase
 
   //---------------------------------------

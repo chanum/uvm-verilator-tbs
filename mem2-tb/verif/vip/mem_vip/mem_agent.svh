@@ -1,5 +1,9 @@
 
 class mem_agent extends uvm_agent;
+  
+  uvm_analysis_port #(mem_seq_item) aport;
+
+  mem_agent_config m_config;
 
   //---------------------------------------
   // component instances
@@ -23,22 +27,33 @@ class mem_agent extends uvm_agent;
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
 
-    monitor = mem_monitor::type_id::create("monitor", this);
-
-    //creating driver and sequencer only for ACTIVE agent
-    if(get_is_active() == UVM_ACTIVE) begin
-      driver    = mem_driver::type_id::create("driver", this);
-      sequencer = mem_sequencer::type_id::create("sequencer", this);
+    if (m_config == null) begin
+      if (!uvm_config_db#(mem_agent_config)::get(this, "", "m_agt_config", m_config)) begin
+        `uvm_fatal(this.get_full_name(), "No mem_agent config specified!")
+      end
     end
+
+     if (m_config.active == UVM_ACTIVE) begin
+      sequencer = mem_sequencer::type_id::create("sequencer", this);
+      driver = mem_driver::type_id::create("driver", this);
+      // driver.m_cfg = m_config;
+    end
+
+    monitor = mem_monitor::type_id::create("monitor", this);
+    // monitor.m_cfg = m_config;
+
+    aport = new("aport", this);
   endfunction : build_phase
 
   //---------------------------------------
   // connect_phase - connecting the driver and sequencer port
   //---------------------------------------
   function void connect_phase(uvm_phase phase);
-    if(get_is_active() == UVM_ACTIVE) begin
+    if (m_config.active == UVM_ACTIVE) begin
       driver.seq_item_port.connect(sequencer.seq_item_export);
     end
+
+    monitor.item_collected_port.connect(aport);
   endfunction : connect_phase
 
 endclass : mem_agent
