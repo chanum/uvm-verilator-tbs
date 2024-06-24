@@ -1,5 +1,10 @@
 
 class mem_monitor extends uvm_monitor;
+  
+  //---------------------------------------
+  // Configuration Object
+  //---------------------------------------
+  mem_agent_config m_cfg;
 
   //---------------------------------------
   // Virtual Interface
@@ -33,9 +38,19 @@ class mem_monitor extends uvm_monitor;
   //---------------------------------------
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-    if (!uvm_config_db#(virtual mem_if)::get(this, "", "vif", vif))
-      `uvm_fatal("NOVIF", {"virtual interface must be set for: ", get_full_name(), ".vif"});
+    // if (!uvm_config_db#(virtual mem_if)::get(this, "", "vif", vif)) begin
+    //   `uvm_fatal("NOVIF", {"virtual interface must be set for: ", get_full_name(), ".vif"});
+    // end
   endfunction : build_phase
+
+  //---------------------------------------
+  // connect_phase - getting the interface handle
+  //---------------------------------------
+  function void connect_phase(uvm_phase phase);
+    super.connect_phase(phase);
+
+    vif = m_cfg.vif;
+  endfunction : connect_phase
 
   //---------------------------------------
   // run_phase - convert the signal level activity to transaction level.

@@ -29,19 +29,19 @@ module tb_top;
   //---------------------------------------
   // interface instance
   //---------------------------------------
-  mem_if intf(clk, reset);
+  mem_if mem_intf(clk, reset);
 
   //---------------------------------------
   // DUT instance
   //---------------------------------------
   memory DUT (
-    .clk(intf.clk),
-    .reset(intf.reset),
-    .addr(intf.addr),
-    .wr_en(intf.wr_en),
-    .rd_en(intf.rd_en),
-    .wdata(intf.wdata),
-    .rdata(intf.rdata)
+    .clk(mem_intf.clk),
+    .reset(mem_intf.reset),
+    .addr(mem_intf.addr),
+    .wr_en(mem_intf.wr_en),
+    .rd_en(mem_intf.rd_en),
+    .wdata(mem_intf.wdata),
+    .rdata(mem_intf.rdata)
    );
 
   //---------------------------------------
@@ -49,7 +49,7 @@ module tb_top;
   // and enabling the wave dump
   //---------------------------------------
   initial begin
-    uvm_config_db#(virtual mem_if)::set(uvm_root::get(),"*","vif",intf);
+    uvm_config_db#(virtual mem_if)::set(uvm_root::get(), "*"," mem_vif", mem_intf);
   end
 
   //---------------------------------------
