@@ -2,6 +2,8 @@
 `define DRIV_IF vif
 
 class mem_driver extends uvm_driver #(mem_seq_item);
+  
+  mem_agent_config m_cfg;
 
   //---------------------------------------
   // Virtual Interface
@@ -21,8 +23,10 @@ class mem_driver extends uvm_driver #(mem_seq_item);
   //---------------------------------------
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-     if(!uvm_config_db#(virtual mem_if)::get(this, "", "mem_vif", vif))
-       `uvm_fatal("NO_VIF",{"virtual interface must be set for: ",get_full_name(),".vif"});
+    // if (!uvm_config_db#(virtual mem_if)::get(this, "", "mem_vif", vif)) begin
+    //   `uvm_fatal("NO_VIF",{"virtual interface must be set for: ",get_full_name(),".vif"});
+    // end
+    vif = m_cfg.vif;
   endfunction: build_phase
 
   //---------------------------------------

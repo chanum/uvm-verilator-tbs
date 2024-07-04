@@ -36,11 +36,11 @@ class mem_agent extends uvm_agent;
      if (m_config.active == UVM_ACTIVE) begin
       sequencer = mem_sequencer::type_id::create("sequencer", this);
       driver = mem_driver::type_id::create("driver", this);
-      // driver.m_cfg = m_config;
+      driver.m_cfg = m_config;
     end
 
     monitor = mem_monitor::type_id::create("monitor", this);
-    // monitor.m_cfg = m_config;
+    monitor.m_cfg = m_config;
 
     aport = new("aport", this);
   endfunction : build_phase
