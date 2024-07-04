@@ -49,7 +49,7 @@ module tb_top;
   // and enabling the wave dump
   //---------------------------------------
   initial begin
-    uvm_config_db#(virtual mem_if)::set(uvm_root::get(),"*","vif",intf);
+    uvm_config_db#(virtual mem_if)::set(uvm_root::get(),"*","mem_vif",intf);
   end
 
   //---------------------------------------

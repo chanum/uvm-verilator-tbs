@@ -30,7 +30,10 @@ class mem_model_base_test extends uvm_test;
     // Configure Agent.
     env_config.mem_agent_cnfg = mem_agent_config::type_id::create("mem_agent_cnfg");
     env_config.mem_agent_cnfg.active = UVM_ACTIVE;
-
+    if (!uvm_config_db#(virtual mem_if)::get(this, "", "mem_vif", env_config.mem_agent_cnfg.vif)) begin
+      `uvm_fatal(get_full_name(), "No virtual interface specified for mem_agent Agent");
+    end
+    
     // Post configure and set configuration object to database
     uvm_config_db#(mem_env_config)::set(uvm_root::get(), "*", "mem_env_config", env_config);
 
